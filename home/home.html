@@ -1,24 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
+HTML
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Películas</title>
     
-    <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Bebas+Neue&display=swap" rel="stylesheet">
-    
-    <!-- Estilos externos y FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans+Condensed:wght@200..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="estilosh.css">
+    <title>Pagina de peliculas</title>
 </head>
 
 <body>
-
-    <!-- Navbar -->
     <div class="navbar">
         <div class="navbar-container">
             <div class="logo-container">
@@ -29,34 +33,35 @@
                     <li class="menu-list-item active">Home</li>
                     <li class="menu-list-item">Movies</li>
                     <li class="menu-list-item">Series</li>
+
                 </ul>
             </div>
+            <div class="toggle">
+                <i class="fas fa-moon toggle-icon"></i>
+                <i class="fas fa-sun toggle-icon"></i>
+                <div class="toggle-ball"></div>
+            </div>
             <div class="profile-container">
-                <img class="profile-picture" src="img/profile.jpg" alt="Foto de perfil">
+                <img class="profile-picture" src="img/profile.jpg" alt="">
                 <div class="profile-text-container">
                     <span class="profile-text">Profile</span>
                     <i class="fas fa-caret-down"></i>
                 </div>
             </div>
         </div>
-    </div>
+    </div>   
 
-    <!-- Contenedor de películas -->
-    <div id="contenedor-peliculas">
-        <!-- Aquí se cargarán las películas mediante JavaScript -->
-    </div>
-
-    <!-- Modal para mostrar detalles de la película -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <h3 id="modal-titulo"></h3>
-            <p id="modal-director"></p>
-            <p id="modal-año"></p>
-            <p id="modal-descripcion"></p>
-            <button id="btn-ver-pelicula">Ver película</button>
+    <div class="container">
+        <div class="content-container">
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">NEW RELEASES</h1>
+                <br>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list"></div>
+                </div>
+            </div>
         </div>
     </div>
-
     <script src="scripth.js"></script>
 </body>
 </html>
