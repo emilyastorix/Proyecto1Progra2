@@ -1,0 +1,68 @@
+/* estiloslg.css */
+
+/* Fondo morado sólido */
+body {
+    background-color: #520452;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* Centrar el card de login en el centro */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Estilos para el card del formulario */
+#formLogin {
+    background-color: #000000; /* Fondo negro */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Estilos de texto y etiquetas */
+h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+label, small, .form-check-label {
+    color: white;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="checkbox"] {
+    background-color: #dcdbdb;
+    color: white;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/* Botón de submit con color morado */
+button[type="submit"] {
+    background-color: #800080;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Hover en el botón */
+button[type="submit"]:hover {
+    background-color: #9b00b3;
+}
+
