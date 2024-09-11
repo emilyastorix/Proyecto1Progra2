@@ -1,4 +1,4 @@
-HTML
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,16 +10,8 @@ HTML
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans+Condensed:wght@200..900&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="estilosh.css">
-    <title>Pagina de peliculas</title>
+    <title>Streaming de Películas</title>
 </head>
 
 <body>
@@ -33,7 +25,6 @@ HTML
                     <li class="menu-list-item active">Home</li>
                     <li class="menu-list-item">Movies</li>
                     <li class="menu-list-item">Series</li>
-
                 </ul>
             </div>
             <div class="toggle">
@@ -42,7 +33,7 @@ HTML
                 <div class="toggle-ball"></div>
             </div>
             <div class="profile-container">
-                <img class="profile-picture" src="img/profile.jpg" alt="">
+                <img class="profile-picture" src="img/profile.jpg" alt="Profile">
                 <div class="profile-text-container">
                     <span class="profile-text">Profile</span>
                     <i class="fas fa-caret-down"></i>
@@ -55,13 +46,85 @@ HTML
         <div class="content-container">
             <div class="movie-list-container">
                 <h1 class="movie-list-title">NEW RELEASES</h1>
-                <br>
                 <div class="movie-list-wrapper">
-                    <div class="movie-list"></div>
+                    <div class="movie-list" id="movieList">
+                        <!-- Películas generadas dinámicamente aquí -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="scripth.js"></script>
+
+    <script>
+        // Array con la información de las películas
+        const movies = [
+            { id: "movie1", title: "Inception", img: "imagen/inception.jpg", desc: "Un thriller que desafía la mente sobre sueños dentro de sueños." },
+            { id: "movie2", title: "The Dark Knight", img: "imagen/the dark knight.jpg", desc: "Una oscura historia sobre la lucha entre el bien y el mal en Gotham." },
+            { id: "movie3", title: "Interstellar", img: "imagen/interestellar.jpg", desc: "Una épica aventura espacial en busca de la supervivencia de la humanidad." },
+            { id: "movie4", title: "Parasite", img: "imagen/parasite.jpg", desc: "Una sátira social que explora las diferencias de clase de manera inquietante." },
+            { id: "movie5", title: "12 Years a Slave", img: "imagen/12 years a slave.jpg", desc: "La desgarradora historia real de un hombre libre convertido en esclavo." },
+            { id: "movie6", title: "Akira", img: "imagen/akira.jpg", desc: "Una obra maestra de la animación que explora el poder y la destrucción en un futuro distópico." },
+            { id: "movie7", title: "Alien", img: "imagen/alien.jpg", desc: "Un terrorífico viaje espacial donde la tripulación enfrenta una amenaza extraterrestre." },
+            { id: "movie8", title: "Amelie", img: "imagen/amelie.jpg", desc: "La encantadora historia de una joven que decide mejorar la vida de quienes la rodean." },
+            { id: "movie9", title: "Blade Runner 2049", img: "imagen/blade runner 2049.jpg", desc: "Una secuela que profundiza en el debate sobre lo que significa ser humano." },
+            { id: "movie10", title: "Call Me By Your Name", img: "imagen/call me by your name.jpg", desc: "Un hermoso relato sobre el despertar del amor en un verano italiano." },
+            { id: "movie11", title: "Carol", img: "imagen/carol.jpg", desc: "Una conmovedora historia de amor prohibido en la década de 1950." },
+            { id: "movie12", title: "Casablanca", img: "imagen/Casablanca.jpg", desc: "Un clásico romance en tiempos de guerra en una ciudad llena de intriga." },
+            { id: "movie13", title: "Child's Play", img: "imagen/childs play.jpg", desc: "Un juguete asesino cobra vida en esta aterradora película de terror." },
+            { id: "movie14", title: "City of God", img: "imagen/city of god.jpg", desc: "Una cruda representación de la vida en las favelas de Río de Janeiro." },
+            { id: "movie15", title: "Cowboy Bebop The Movie", img: "imagen/cowboy bebop the movie.jpg", desc: "Un grupo de cazarrecompensas lucha contra una amenaza biológica en Marte." },
+            { id: "movie16", title: "Fight Club", img: "imagen/fight club.jpg", desc: "Dos hombres inician un club de peleas que desafía las normas sociales." },
+            { id: "movie17", title: "Forrest Gump", img: "imagen/forrest gump.jpg", desc: "La inspiradora historia de un hombre que, sin saberlo, impacta la historia estadounidense." },
+            { id: "movie18", title: "Ghost in the Shell", img: "imagen/ghost in the shell.jpg", desc: "Una exploración filosófica de la identidad en un mundo cibernético." },
+            { id: "movie19", title: "Gladiator", img: "imagen/gladiator.png", desc: "Un general romano busca venganza como gladiador en la arena." },
+            { id: "movie20", title: "The Godfather", img: "imagen/godfather.jpg", desc: "La épica saga de una familia mafiosa y su lucha por el poder." },
+            { id: "movie21", title: "Grave of the Fireflies", img: "imagen/grave of the fireflies.jpg", desc: "Una conmovedora y trágica historia sobre dos hermanos en la Segunda Guerra Mundial." },
+            { id: "movie22", title: "Jaws", img: "imagen/jaws.jpg", desc: "Un tiburón asesino aterroriza una pequeña comunidad costera." },
+            { id: "movie23", title: "La La Land", img: "imagen/la la land.jpg", desc: "Un romance lleno de música y sueños en la ciudad de Los Ángeles." },
+            { id: "movie24", title: "Mad Max", img: "imagen/mad max.jpg", desc: "Un guerrero solitario sobrevive en un mundo postapocalíptico." },
+            { id: "movie25", title: "Memento", img: "imagen/memento.jpg", desc: "Un hombre con amnesia lucha por resolver el misterio de su pasado." },
+            { id: "movie26", title: "Moonlight", img: "imagen/moonlight.jpg", desc: "Un joven afroamericano enfrenta su identidad y su lugar en el mundo." },
+            { id: "movie27", title: "Mi Vecino Totoro", img: "imagen/my neighbot totoro.jpg", desc: "Dos hermanas descubren criaturas mágicas en el campo japonés." },
+            { id: "movie28", title: "Nausicaa del Valle del Viento", img: "imagen/nausicaa of the valley of the wind.jpg", desc: "Una princesa lucha por salvar su mundo en un futuro devastado." },
+            { id: "movie29", title: "Oldboy", img: "imagen/old boy.jpg", desc: "Un hombre busca venganza tras ser encarcelado sin explicación durante 15 años." },
+            { id: "movie30", title: "El Laberinto del Fauno", img: "imagen/pans labyrinth.jpg", desc: "Una niña escapa a un mundo de fantasía en plena posguerra española." },
+            { id: "movie31", title: "Paprika", img: "imagen/paprika.jpg", desc: "Un psicoterapeuta utiliza una máquina que permite a las personas entrar en los sueños." },
+            { id: "movie32", title: "Perfect Blue", img: "imagen/perfect blue.jpg", desc: "Una estrella pop en declive enfrenta una crisis de identidad y terror psicológico." },
+            { id: "movie33", title: "La Princesa Mononoke", img: "imagen/princess mononoke.jpg", desc: "Una épica batalla entre la humanidad y los espíritus de la naturaleza." },
+            { id: "movie34", title: "Pulp Fiction", img: "imagen/pulp fiction.jpg", desc: "Historias entrelazadas de violencia y redención en el bajo mundo de Los Ángeles." },
+            { id: "movie35", title: "Requiem por un Sueño", img: "imagen/requiem for a dream.jpg", desc: "Una cruda mirada a la adicción y su destructiva influencia en la vida de cuatro personas." },
+            { id: "movie36", title: "La Lista de Schindler", img: "imagen/Schindlers list.jpg", desc: "Un empresario alemán salva a cientos de judíos durante el Holocausto." },
+            { id: "movie37", title: "El Silencio de los Inocentes", img: "imagen/silence of the lambs.jpg", desc: "Una agente del FBI busca la ayuda de un asesino en serie para atrapar a otro." },
+            { id: "movie38", title: "El Viaje de Chihiro", img: "imagen/spirited away.jpg", desc: "Una niña entra en un mundo mágico donde debe salvar a sus padres y encontrar su camino." },
+            { id: "movie39", title: "El Gran Hotel Budapest", img: "imagen/tghb.jpg", desc: "Las aventuras de un conserje en un hotel de lujo durante una época turbulenta en Europa." },
+            { id: "movie40", title: "La Milla Verde", img: "imagen/the green mile.jpg", desc: "Un guardia de prisión se enfrenta a milagros y horrores en el corredor de la muerte." },
+            { id: "movie41", title: "La Doncella", img: "imagen/the handmaiden.jpg", desc: "Una estafadora se infiltra en la vida de una rica heredera con un peligroso plan." },
+            { id: "movie42", title: "Whiplash", img: "imagen/whiplash.jpg", desc: "Un joven baterista lucha por alcanzar la perfección bajo la dirección de un maestro despiadado." },
+            { id: "movie43", title: "Thelma", img: "imagen/thelma.jpg", desc: "Una joven desarrolla habilidades sobrenaturales mientras descubre secretos sobre su pasado." },
+            { id: "movie44", title: "La Red Social", img: "imagen/the social network.jpg", desc: "La historia detrás de la creación de Facebook y las traiciones que surgieron en el camino." },
+            { id: "movie45", title: "El Resplandor", img: "imagen/the shining.jpg", desc: "Un hombre pierde la cordura mientras cuida un hotel aislado con su familia." },
+            { id: "movie46", title: "Habrá Sangre", img: "imagen/there will b blood.jpg", desc: "Un ambicioso magnate del petróleo construye su imperio a costa de su humanidad." },
+            { id: "movie47", title: "Matrix", img: "imagen/the matrix.jpg", desc: "Un joven se dara cuenta de que su realidad podria no ser como el pensaba." }, 
+            { id: "movie48", title: "El Señor de los Anillos: La Comunidad del Anillo", img: "imagen/tlotr tfotr.jpg", desc: "Un grupo de héroes se une para destruir un anillo poderoso que amenaza al mundo." }
+            // Puedes agregar más películas aquí
+        ];
+
+        const movieList = document.getElementById("movieList");
+
+        movies.forEach((movie) => {
+            const movieItem = document.createElement("div");
+            movieItem.classList.add("movie-list-item");
+            
+            movieItem.innerHTML = `
+                <img src="${movie.img}" alt="${movie.title}">
+                <div class="movie-info-card">
+                    <h3>${movie.title}</h3>
+                    <p>${movie.desc}</p>
+                </div>
+            `;
+            
+            movieList.appendChild(movieItem);
+        });
+    </script>
 </body>
 </html>
